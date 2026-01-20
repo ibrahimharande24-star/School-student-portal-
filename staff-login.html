@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Staff Login | Life Time Integrated Academy, Bodinga</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>Staff / MIS Login</h1>
+<p>Authorized Access Only</p>
+</header>
+
+<section class="section">
+<div class="card">
+
+<form onsubmit="staffLogin(event)">
+<label>Staff ID</label>
+<input type="text" id="staffId" required>
+
+<label>Password</label>
+<input type="password" id="password" required>
+
+<button type="submit">Login</button>
+</form>
+
+<p id="loginMsg"></p>
+
+</div>
+</section>
+
+<script>
+function staffLogin(e){
+    e.preventDefault();
+
+    const staffId = document.getElementById("staffId").value;
+    const password = document.getElementById("password").value;
+
+    if(staffId === "MIS001" && password === "admin123"){
+        localStorage.setItem("staffLoggedIn","true");
+        window.location.href = "staff-dashboard.html";
+    } else {
+        document.getElementById("loginMsg").innerText = "❌ Invalid staff credentials";
+    }
+}
+</script>
+
+</body>
+</html>

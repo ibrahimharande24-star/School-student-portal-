@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Login | Life Time Integrated Academy, Bodinga</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Student Portal Login</h1>
+    <p>Life Time Integrated Academy, Bodinga</p>
+</header>
+
+<section class="section">
+    <div class="card">
+        <h2>Student Login</h2>
+
+        <form onsubmit="loginStudent(event)">
+            <label>Admission Number</label>
+            <input type="text" id="admNo" placeholder="e.g. LTIAB/2025/001" required>
+
+            <label>Password</label>
+            <input type="password" placeholder="Enter password" required>
+
+            <br><br>
+            <button type="submit">Login</button>
+<p style="margin-top:15px;">
+    New student? <a href="student-register.html">Register here</a>
+</p>
+        </form>
+    </div>
+</section>
+
+<script>
+function loginStudent(e) {
+    e.preventDefault();
+    const adm = document.getElementById("admNo").value;
+
+    // simple simulation
+    localStorage.setItem("studentLoggedIn", "true");
+    localStorage.setItem("studentAdmNo", adm);
+
+    window.location.href = "student-dashboard.html";
+}
+</script>
+
+</body>
+</html>

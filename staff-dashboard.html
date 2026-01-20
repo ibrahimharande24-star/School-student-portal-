@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Staff Dashboard | Life Time Integrated Academy, Bodinga</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>
+if(!localStorage.getItem("staffLoggedIn")){
+    window.location.href = "staff-login.html";
+}
+</script>
+
+<header>
+<h1>Staff / MIS Dashboard</h1>
+<p>Life Time Integrated Academy, Bodinga</p>
+</header>
+
+<section class="section">
+
+<div class="card">
+<h3>Upload Student Result</h3>
+
+<form onsubmit="uploadResult(event)">
+<label>Student Registration Code</label>
+<input type="text" id="regCode" required>
+
+<label>Subject</label>
+<input type="text" id="subject" required>
+
+<label>Score (0–100)</label>
+<input type="number" id="score" min="0" max="100" required>
+
+<button type="submit">Upload Result</button>
+</form>
+
+<p id="msg"></p>
+</div>
+
+<div class="card">
+<h3>Uploaded Results (All)</h3>
+<table border="1" width="100%" cellpadding="8" id="resultTable">
+<tr>
+<th>Reg Code</th>
+<th>Subject</th>
+<th>Score</th>
+<th>Grade</th>
+<th>Remark</th>
+</tr>
+</table>
+</div>
+
+<button onclick="logout()">Logout</button>
+</section>
+
+<script>
+function getGrade(score){
+    if(score >= 70) return {g:"A", r:"Excellent"};
+    if(score >= 60) return {g:"B", r:"Very Good"};
+    if(score >= 50) return {g:"C", r:"Good"};
+    if(score >= 45) return {g:"D", r:"Pass"};
+    return {g:"F", r:"Fail"};
+}
+
+function uploadResult(e){
+    e.preventDefault();
+
+    const regCode = document.getElementById("regCode").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const score = parseInt(document.getElementById("score").value);
+
+    const gr = getGrade(score);
+
+    const stored = JSON.parse(localStorage.getItem("schoolResults")) || [];
+    stored.push({
+        regCode,
+        subject,
+        score,
+        grade: gr.g,
+        remark: gr.r
+    });
+
+    localStorage.setItem("schoolResults", JSON.stringify(stored));
+
+    document.getElementById("msg").innerText =
+        "✅ Result uploaded and saved.";
+
+    loadTable();
+    e.target.reset();
+}
+
+function loadTable(){
+    const table = document.getElementById("resultTable");
+    table.innerHTML = `
+        <tr>
+        <th>Reg Code</th><th>Subject</th><th>Score</th><th>Grade</th><th>Remark</th>
+        </tr>`;
+
+    const stored = JSON.parse(localStorage.getItem("schoolResults")) || [];
+    stored.forEach(r=>{
+        const row = table.insertRow();
+        row.insertCell(0).innerText = r.regCode;
+        row.insertCell(1).innerText = r.subject;
+        row.insertCell(2).innerText = r.score;
+        row.insertCell(3).innerText = r.grade;
+        row.insertCell(4).innerText = r.remark;
+    });
+}
+
+loadTable();
+
+function logout(){
+    localStorage.removeItem("staffLoggedIn");
+    window.location.href = "staff-login.html";
+}
+</script>
+
+</body>
+</html>

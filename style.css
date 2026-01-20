@@ -1,0 +1,183 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* ===== BODY ===== */
+body {
+    background: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+  
+header {
+    background: linear-gradient(
+        rgba(11, 60, 93, 0.85),
+        rgba(11, 60, 93, 0.85)
+    ),
+    url("https://images.pexels.com/photos/8471835/pexels-photo-8471835.jpeg") 
+    center/cover no-repeat;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    animation: slideDown 1s ease;
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* ===== NAV / BUTTONS ===== */
+button {
+    background: #2ecc71;
+    border: none;
+    padding: 12px 22px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: ;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #27ae60;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ===== LINKS ===== */
+a {
+    text-decoration: none;
+}
+
+/* ===== SECTION ===== */
+.section {
+    padding: 40px 20px;
+    animation: fadeIn 1.2s ease;
+}
+
+.section h2, .section h3 {
+    text-align: center;
+    color: #0b3c5d;
+    margin-bottom: 25px;
+}
+
+/* ===== CARD DESIGN ===== */
+.card {
+    background: #fff;
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    animation: fadeUp 1s ease;
+}
+
+.card:hover {
+    transform: scale(1.01);
+}
+
+/* ===== LIST ===== */
+ul {
+    list-style: none;
+}
+
+ul li {
+    padding: 8px 0;
+}
+
+/* ===== FORMS ===== */
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* ===== DASHBOARD STATS ===== */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.stat-box {
+    background: linear-gradient(135deg, #6c5ce7, #341f97);
+    color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.stat-box h3 {
+    font-size: 2rem;
+}
+
+/* ===== TABLE ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    background: #0b3c5d;
+    color: #fff;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #0b3c5d;
+    color: #fff;
+    text-align: center;
+    padding: 18px;
+    margin-top: 40px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

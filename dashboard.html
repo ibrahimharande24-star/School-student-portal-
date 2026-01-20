@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head><!-- Injected code, this is not present in original code --><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script class="mtdubso4" src="/mtdubso4_console.js" crossorigin="anonymous"></script>
+    <script class="mtdubso4">
+      if(window.eruda){
+        eruda.init({
+          theme: 'dark'
+        });
+
+        eruda._shadowRoot.querySelector('.eruda-entry-btn').style.display = 'none';
+
+        sessionStorage.setItem('__console_available', true);
+        document.addEventListener('showconsole', function () {eruda.show()});
+        document.addEventListener('hideconsole', function () {eruda.hide()});
+      }else if(document.querySelector('c-toggler')){
+        document.querySelector('c-toggler').style.display = 'none';
+      }
+      setTimeout(function(){
+        var scripts = document.querySelectorAll('.mtdubso4');
+        scripts.forEach(function(el){document.head.removeChild(el)});
+      }, 0);
+    </script><!-- Injected code, this is not present in original code -->
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Student Dashboard</h1>
+</header>
+
+<section class="section dashboard">
+
+    <div class="card">
+        <h3>Student Profile</h3>
+        <p>Name: Student Name</p>
+        <p>Faculty: Science</p>
+    </div>
+
+    <div class="card">
+        <h3>Course Registration</h3>
+        <form>
+            <label><input type="checkbox"> Mathematics</label><br>
+            <label><input type="checkbox"> Physics</label><br>
+            <label><input type="checkbox"> Chemistry</label><br>
+            <button type="button">Save Courses</button>
+        </form>
+    </div>
+
+</section>
+<section class="section">
+    <h3>Student Academic History</h3>
+
+    <!-- Academic Records -->
+    <div class="card">
+        <h4>Academic Records</h4>
+        <table border="1" width="100%" cellpadding="8">
+            <tr>
+                <th>Session</th>
+                <th>Semester</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>2024 / 2025</td>
+                <td>First Semester</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td>2024 / 2025</td>
+                <td>Second Semester</td>
+                <td>Completed</td>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+
+    <!-- Results -->
+    <div class="card">
+        <h4>Check Results</h4>
+        <table border="1" width="100%" cellpadding="8">
+            <tr>
+                <th>Course</th>
+                <th>Score</th>
+                <th>Grade</th>
+            </tr>
+            <tr>
+                <td>Mathematics</td>
+                <td>78</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>Physics</td>
+                <td>85</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>Chemistry</td>
+                <td>72</td>
+                <td>B</td>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+
+    <!-- Exam Papers -->
+    <div class="card">
+        <h4>Exam Papers</h4>
+        <ul>
+            <li><a href="#" download>Mathematics Exam Paper (PDF)</a></li>
+            <li><a href="#" download>Physics Exam Paper (PDF)</a></li>
+            <li><a href="#" download>Chemistry Exam Paper (PDF)</a></li>
+        </ul>
+        <p><em>*Demo files for academic use</em></p>
+    </div>
+
+    <br>
+
+    <!-- Leave of Absence -->
+    <div class="card">
+        <h4>Leave of Absence</h4>
+        <form onsubmit="leaveDemo(event)">
+            <label>Reason for Leave</label>
+            <select required>
+                <option>Medical</option>
+                <option>Financial</option>
+                <option>Personal</option>
+                <option>Other</option>
+            </select>
+
+            <label>Duration</label>
+            <input type="text" placeholder="e.g. One Semester" required>
+
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
+
+</section>
+
+<script>
+function leaveDemo(e) {
+    e.preventDefault();
+    alert("Leave request submitted successfully (Demo).");
+}
+</script>
+
+<section class="section">
+    <h3>Student QR Code</h3>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Lifestyle International Academy - Student Portal">
+</section>
+
+</body>
+</html>

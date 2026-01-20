@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Dashboard | Life Time Integrated Academy, Bodinga</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>
+if(!localStorage.getItem("studentLoggedIn")){
+    window.location.href = "student-login.html";
+}
+</script>
+
+<header>
+<h1>Student Dashboard</h1>
+<p>Life Time Integrated Academy, Bodinga</p>
+</header>
+
+<section class="section">
+
+<div class="card">
+<h3>Academic Results</h3>
+
+<table border="1" width="100%" cellpadding="8" id="studentTable">
+<tr>
+<th>Subject</th>
+<th>Score</th>
+<th>Grade</th>
+<th>Remark</th>
+</tr>
+</table>
+
+<br>
+<h4>Total Percentage: <span id="percent">0</span>%</h4>
+<h4>Final Remark: <span id="finalRemark">-</span></h4>
+
+<br>
+<button onclick="window.print()">Print Result</button>
+</div>
+
+<button onclick="logout()">Logout</button>
+</section>
+
+<script>
+const myRegCode = localStorage.getItem("studentRegCode");
+const allResults = JSON.parse(localStorage.getItem("schoolResults")) || [];
+
+let total = 0;
+let count = 0;
+
+const table = document.getElementById("studentTable");
+
+allResults.forEach(r=>{
+    if(r.regCode === myRegCode){
+        const row = table.insertRow();
+        row.insertCell(0).innerText = r.subject;
+        row.insertCell(1).innerText = r.score;
+        row.insertCell(2).innerText = r.grade;
+        row.insertCell(3).innerText = r.remark;
+
+        total += r.score;
+        count++;
+    }
+});
+
+if(count > 0){
+    const percent = (total / (count * 100)) * 100;
+    document.getElementById("percent").innerText = percent.toFixed(2);
+
+    let remark = "Fail";
+    if(percent >= 70) remark = "Excellent";
+    else if(percent >= 60) remark = "Very Good";
+    else if(percent >= 50) remark = "Good";
+    else if(percent >= 45) remark = "Pass";
+
+    document.getElementById("finalRemark").innerText = remark;
+} else {
+    document.getElementById("finalRemark").innerText =
+        "No result uploaded yet.";
+}
+
+function logout(){
+    localStorage.removeItem("studentLoggedIn");
+    window.location.href = "student-login.html";
+}
+</script>
+
+</body>
+</html>
